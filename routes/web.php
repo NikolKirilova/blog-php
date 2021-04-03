@@ -8,13 +8,21 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PostLikeController;
 use App\Http\Controllers\UserPostController;
+use App\Http\Controllers\PagesController;
+use App\Http\Controllers\PostsController;
 
 
 
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+//Route::get('/', function () {
+//    return view('home');
+//})->name('home');
+
+Route::get('/', [PagesController::class, 'index']);
+
+Route::resource('/blog', PostsController::class);
+
+
 
 
 Route::get('/dashboard', [DashboardController::class,'index'])->name('dashboard');
